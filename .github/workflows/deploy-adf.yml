@@ -1,4 +1,4 @@
-name: Azure IaC
+name: Azure IaC dev
 
 on:
   push:
