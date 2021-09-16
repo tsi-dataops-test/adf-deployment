@@ -21,7 +21,7 @@ resource "azurerm_resource_group" "dataops-dev-rg" {
   tags = var.resource_tags
 }
 resource "azurerm_storage_account" "data_lake_storage" {
-  name                     = "${var.project_name}-lake"
+  name                     = "${var.project_name}datalake"
   resource_group_name      = azurerm_resource_group.dataops-dev-rg.name
   location                 = azurerm_resource_group.dataops-dev-rg.location
   account_tier             = "Standard"
