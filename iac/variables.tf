@@ -1,7 +1,7 @@
 variable "project_name" {
   description = "Name of the project"
   type        = string
-  default     = "dataops-dev"
+  default     = "dataopsdev"
 }
 variable "location" {
   description = "Azure location"
