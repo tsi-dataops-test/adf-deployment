@@ -8,9 +8,6 @@
 		"DataLake_connectionString": {
 			"value": ""
 		},
-		"NYCDatasets_properties_typeProperties_url": {
-			"value": "@{linkedService().url}"
-		},
 		"containerUri": {
 			"value": ""
 		},

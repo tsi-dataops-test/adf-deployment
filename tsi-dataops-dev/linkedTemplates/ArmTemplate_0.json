@@ -10,10 +10,6 @@
 		"DataLake_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'DataLake'"
-		},
-		"NYCDatasets_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "@{linkedService().url}"
 		}
 	},
 	"variables": {
@@ -29,26 +25,6 @@
 				"type": "AzureBlobStorage",
 				"typeProperties": {
 					"connectionString": "[parameters('DataLake_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/NYCDatasets')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"parameters": {
-					"url": {
-						"type": "string"
-					}
-				},
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('NYCDatasets_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": false,
-					"authenticationType": "Anonymous"
 				}
 			},
 			"dependsOn": []
