@@ -30,28 +30,8 @@ resource "azurerm_storage_account" "data_lake_storage" {
   tags = var.resource_tags
 }
 resource "azurerm_storage_data_lake_gen2_filesystem" "data-lake-fs" {
-  name               = "dataopsfs"
+  name               = "landing-zone"
   storage_account_id = azurerm_storage_account.data_lake_storage.id
-}
-resource "azurerm_storage_container" "data_lake_storage_landing_zone" {
-  name                  = "landing-zone"
-  storage_account_name  = azurerm_storage_account.data_lake_storage.name
-  container_access_type = "private"
-}
-resource "azurerm_storage_container" "data_lake_storage_archive" {
-  name                  = "archive"
-  storage_account_name  = azurerm_storage_account.data_lake_storage.name
-  container_access_type = "private"
-}
-resource "azurerm_storage_container" "data_lake_storage_delta" {
-  name                  = "delta"
-  storage_account_name  = azurerm_storage_account.data_lake_storage.name
-  container_access_type = "private"
-}
-resource "azurerm_storage_container" "data_lake_storage_corrupt" {
-  name                  = "faulty-files"
-  storage_account_name  = azurerm_storage_account.data_lake_storage.name
-  container_access_type = "private"
 }
 resource "azurerm_data_factory" "adf_test" {
   name                = "tsi-dataops-dev"
