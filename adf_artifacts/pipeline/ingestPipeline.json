@@ -70,6 +70,49 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "CheckColumnCount",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "IngestNYCDataFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ingestedFile",
+						"type": "DatasetReference",
+						"parameters": {
+							"filename": {
+								"value": "@last(split(pipeline().parameters.url, '/'))",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"columnCount",
+						"itemName"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
 			}
 		],
 		"parameters": {
