@@ -46,7 +46,7 @@ resource "azurerm_storage_container" "data_lake_storage_delta" {
   container_access_type = "private"
 }
 resource "azurerm_data_factory" "adf_test" {
-  name                = "dataops-adf-dev"
+  name                = "tsi-dataops-dev"
   resource_group_name = azurerm_resource_group.dataops-dev-rg.name
   location            = azurerm_resource_group.dataops-dev-rg.location
 
