@@ -2,7 +2,7 @@
 	"name": "ingestedFile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "DnADataLake",
+			"referenceName": "DataLake",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
@@ -14,12 +14,12 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
+				"type": "AzureBlobStorageLocation",
 				"fileName": {
 					"value": "@dataset().filename",
 					"type": "Expression"
 				},
-				"fileSystem": "landing-zone"
+				"container": "landing-zone"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
