@@ -58,3 +58,10 @@ resource "azurerm_data_factory" "adf_test" {
     root_folder     = "/adf_artifacts"
   }
 }
+resource "azurerm_databricks_workspace" "ucf-databricks" {
+  name                = "${var.project_name}-db"
+  resource_group_name = azurerm_resource_group.dataops-dev-rg.name
+  location            = azurerm_resource_group.dataops-dev-rg.location
+  sku                 = "standard"
+  tags = var.resource_tags
+}
