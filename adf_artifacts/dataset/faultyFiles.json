@@ -2,15 +2,15 @@
 	"name": "faultyFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "DnADataLake",
+			"referenceName": "DataLake",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileSystem": "faulty-files"
+				"type": "AzureBlobStorageLocation",
+				"container": "faulty-files"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
