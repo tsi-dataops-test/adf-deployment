@@ -54,8 +54,4 @@ resource "azurerm_data_factory" "adf_test" {
   name                = "tsi-dataops-prod"
   resource_group_name = azurerm_resource_group.dataops-prod-rg.name
   location            = azurerm_resource_group.dataops-prod-rg.location
-
-  identity {
-    type = "SystemAssigned"
-  }
 }
