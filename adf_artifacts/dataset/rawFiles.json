@@ -2,15 +2,25 @@
 	"name": "rawFiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "DnADataLake",
-			"type": "LinkedServiceReference"
+			"referenceName": "NYCDatasets",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"url": {
+					"value": "@dataset().url",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"url": {
+				"type": "string"
+			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobFSLocation",
-				"fileSystem": "landing-zone"
+				"type": "HttpServerLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
