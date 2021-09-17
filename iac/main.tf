@@ -57,6 +57,9 @@ resource "azurerm_data_factory" "adf_test" {
     repository_name = "adf_deployment"
     root_folder     = "/adf_artifacts"
   }
+  identity {
+    type = "SystemAssigned"
+  }
 }
 resource "azurerm_databricks_workspace" "ucf-databricks" {
   name                = "dataops-db"
