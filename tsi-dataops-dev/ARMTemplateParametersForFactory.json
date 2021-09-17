@@ -5,14 +5,8 @@
 		"factoryName": {
 			"value": "tsi-dataops-dev"
 		},
-		"AzureDatabricks1_accessToken": {
-			"value": ""
-		},
 		"DataLake_connectionString": {
 			"value": ""
-		},
-		"bigdataKeyvault_properties_typeProperties_baseUrl": {
-			"value": "https://bigdata-keyvault.vault.azure.net/"
 		},
 		"NYCDatasets_properties_typeProperties_url": {
 			"value": "@{linkedService().url}"

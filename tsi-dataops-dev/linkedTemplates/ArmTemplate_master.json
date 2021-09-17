@@ -7,17 +7,9 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "tsi-dataops-dev"
 		},
-		"AzureDatabricks1_accessToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accessToken' of 'AzureDatabricks1'"
-		},
 		"DataLake_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'DataLake'"
-		},
-		"bigdataKeyvault_properties_typeProperties_baseUrl": {
-			"type": "string",
-			"defaultValue": "https://bigdata-keyvault.vault.azure.net/"
 		},
 		"NYCDatasets_properties_typeProperties_url": {
 			"type": "string",
@@ -50,14 +42,8 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"AzureDatabricks1_accessToken": {
-						"value": "[parameters('AzureDatabricks1_accessToken')]"
-					},
 					"DataLake_connectionString": {
 						"value": "[parameters('DataLake_connectionString')]"
-					},
-					"bigdataKeyvault_properties_typeProperties_baseUrl": {
-						"value": "[parameters('bigdataKeyvault_properties_typeProperties_baseUrl')]"
 					},
 					"NYCDatasets_properties_typeProperties_url": {
 						"value": "[parameters('NYCDatasets_properties_typeProperties_url')]"
