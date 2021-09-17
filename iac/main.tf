@@ -49,7 +49,9 @@ resource "azurerm_data_factory" "adf_test" {
   name                = "tsi-dataops-dev"
   resource_group_name = azurerm_resource_group.dataops-dev-rg.name
   location            = azurerm_resource_group.dataops-dev-rg.location
-
+  identity {
+    type = "SystemAssigned"
+  }
   github_configuration {
     account_name    = "tsi-dataops-test"
     branch_name     = "development"
