@@ -1,4 +1,4 @@
-name: Deploy production from ARM template
+name: Deploy ARM template to Production
 
 # Controls when the workflow will run
 on:
@@ -10,9 +10,34 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+env:
+  AZURE_RESOURCE_GROUP: dataopsprod-rg  
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID }}
+  AZURE_SP_CLIENT_ID: ${{ secrets.ARM_CLIENT_ID }}
+  AZURE_DEV_DF_NAME: tsi-dataops-dev
+  AZURE_PRD_DF_NAME: tsi-dataops-prod
+  STORAGE_ACCOUNT_NAME: dataopsproddatalake
+  PROD_STORAGE_CONN: ${{ secrets.PROD_STORAGE_CONN }}
+  DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
+jobs:
+  deploy-to-prod:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy ARM Template
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+          template: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateForFactory.json
+          parameters: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateParametersForFactory.json
+                      factoryName=${{ env.AZURE_PRD_DF_NAME }}
+                      DataLake_connectionString=${{ env.PROD_STORAGE_CONN }}
+                      AzureDatabricks1_accessToken=${{ env.DATABRICKS_TOKEN }}
+      
