@@ -51,7 +51,7 @@ resource "azurerm_storage_container" "data_lake_storage_corrupt" {
   container_access_type = "private"
 }
 resource "azurerm_data_factory" "adf_test" {
-  name                = "tsi-dataops-dev"
+  name                = "tsi-dataops-prod"
   resource_group_name = azurerm_resource_group.dataops-prod-rg.name
   location            = azurerm_resource_group.dataops-prod-rg.location
 
