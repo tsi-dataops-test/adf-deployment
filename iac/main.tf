@@ -59,7 +59,7 @@ resource "azurerm_data_factory" "adf_test" {
   }
 }
 resource "azurerm_databricks_workspace" "ucf-databricks" {
-  name                = "${var.project_name}-db"
+  name                = "dataops-db"
   resource_group_name = azurerm_resource_group.dataops-dev-rg.name
   location            = azurerm_resource_group.dataops-dev-rg.location
   sku                 = "standard"
