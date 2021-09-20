@@ -15,6 +15,7 @@ terraform {
 provider "azurerm" {
   features {}
 }
+
 resource "azurerm_resource_group" "dataops-dev-rg" {
   name     = "${var.project_name}-rg"
   location = var.location
