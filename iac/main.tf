@@ -40,6 +40,7 @@ resource "azurerm_storage_container" "data_lake_storage_archive" {
   storage_account_name  = azurerm_storage_account.data_lake_storage.name
   container_access_type = "private"
 }
+
 resource "azurerm_storage_container" "data_lake_storage_delta" {
   name                  = "delta"
   storage_account_name  = azurerm_storage_account.data_lake_storage.name
